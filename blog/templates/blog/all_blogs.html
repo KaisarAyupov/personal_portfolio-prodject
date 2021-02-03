@@ -7,21 +7,19 @@
   <article class="blog-post">
     {% for blog in blogs %}
     <h2 class="blog-post-title mt-3">{{ blog.title }}</h2>
-    <p class="blog-post-meta">{{ blog.date|date:'M d Y' }}</p>
+    <p class="text-muted">{{ blog.date|date:'M d Y' }}</p>
     <p>{{ blog.description|striptags|truncatechars:350 }}</p>
     <div class="d-flex justify-content-between align-items-center">
       <div class="btn-group">
         <a href="{% url 'blog:detail' blog.id %}" class="btn btn-sm btn-outline-primary" role="button">Continue
           reading</a>
       </div>
-      <small class="text-muted">{{blogs.count}} blog {{blogs.count|pluralize}}</small>
+      <small class="text-muted">{{blog.get_readtime}}</small>
     </div>
     <hr>
     {% endfor %}
   </article>
-
 </main>
 
 
 {% endblock %}
-
