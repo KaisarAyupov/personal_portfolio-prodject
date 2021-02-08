@@ -10,14 +10,15 @@
         <p class="lead text-muted">In the world of science and even more so when you use open-source products, one of
           the sources of knowledge is the blog</p>
         <p>
-          <a href="{% url 'blog:all_blogs' %}" class="btn btn-primary my-2">Python examples</a>
-          <a href="#" class="btn btn-secondary my-2">More Topics</a>
+          <a href="{% url 'blog:all_blogs' %}" class="btn btn-primary my-2">More Topics</a>
+          <a href="https://github.com/KaisarAyupov" class="btn btn-secondary my-2">Python examples</a>
         </p>
       </div>
     </div>
   </section>
-  <div class="album py-5 bg-light">
+  <div class="album py-3 bg-light">
     <div class="container">
+      <h2 class="blog-post-title mb-4"><span class="fw-bold">Projects</span> I have worked on</h2>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {% for project in projects %}
         <div class="col">
@@ -29,7 +30,14 @@
               <h5 class="card-title">{{ project.title }}</h5>
               <p class="card-text">{{ project.description }}</p>
               <div class="d-flex justify-content-between align-items-center">
-                <a class="btn btn-sm btn-outline-primary" href="{{project.url}}">External link</a>
+                <div class="btn-group">
+                  {% if project.url%}
+                  <a class="btn btn-sm btn-outline-primary" href="{{project.url}}">External link</a>
+                  {% endif %}
+                  {% if project.url_iframe%}
+                  <a class="btn btn-sm btn-outline-primary" href="{{project.url_iframe}}">Video</a>
+                  {% endif %}
+                </div>
                 <small class="text-muted">{{ project.release_date }}</small>
               </div>
             </div>
